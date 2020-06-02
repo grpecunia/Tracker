@@ -8,10 +8,10 @@ class Footer extends Component {
         <footer
           className="page-footer font-small blue pt-4"
           style={{
-            backgroundColor: "#004E98",
+            backgroundColor: "#5680E9",
             paddingTop: "40px",
             paddingBottom: "20px",
-            color: "white",
+            color: "#fff",
             textDecoration: "none",
           }}
         >
@@ -27,8 +27,8 @@ class Footer extends Component {
                   time dedicated to tasks related to the provision of services
                   that your organization performs. <br />
                   <br />
-                  For more information about the application or if you want to get
-                  involved email us at: grpecunia[at]gmail.com
+                  For more information about the application or if you want to
+                  get involved email us at: grpecunia[at]gmail.com
                 </p>
               </div>
 
@@ -112,7 +112,7 @@ class Footer extends Component {
         <div className="footer-copyright text-center py-3">
           Developed by:{" "}
           <a
-            style={{ color: "white" }}
+            style={{ color: "#fff" }}
             href="https://riverapecunia.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -120,7 +120,7 @@ class Footer extends Component {
             Gustavo Rivera Pecunia
           </a>{" "}
           |{" "}
-          <Link style={{ color: "white" }} to="/">
+          <Link style={{ color: "#fff" }} to="/">
             TimeTracker
           </Link>{" "}
           | All rights reserved © {new Date().getFullYear()}

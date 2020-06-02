@@ -78,16 +78,16 @@ body {
 
 
 footer>div>div>div.col-md-6.mt-md-0.mt-3>p>a {
-  color: white
+  color: #fff
 }
 
 footer>div>div>div:nth-child(4)>ul>li>a {
-  color: white
+  color: #fff
 }
 
 .footer-copyright {
-  background-color: #004E98;
-  color: #ffffff;
+  background-color: #5AB9EA;
+  color: #fff;
 }
 
 .row.props {
@@ -100,4 +100,13 @@ footer>div>div>div:nth-child(4)>ul>li>a {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+}
+
+.color-nav {
+  background-color: #5AB9EA;
+}
+
+.jumbotron {
+  margin-bottom: 0em !important;
+  background-color: #fff !important;
 }

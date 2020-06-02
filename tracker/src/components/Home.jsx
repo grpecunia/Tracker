@@ -1,49 +1,54 @@
 import React, { Component } from "react";
-import { Carousel } from "react-bootstrap";
+import { Carousel, Button, Jumbotron } from "react-bootstrap";
 import World from "../images/world.png";
 import Time from "../images/time.jpeg"
+import List from "../images/list.jpg"
+import Dashboard from "../images/dashboard.jpg"
+import Tasks from "../images/tasks.jpg"
 import Footer from "./Footer";
 
 class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
-          <div
-            className="row featurette"
-            style={{ paddingBottom: "50px", paddingTop: "40px" }}
-            id="howTo"
-          >
+        <Jumbotron>
+          <div className="container">
             <div
-              className="col-md-7"
-              style={{ paddingTop: "40px", paddingBottom: "40px" }}
+              className="row featurette"
+              style={{ paddingBottom: "50px", paddingTop: "40px" }}
+              id="howTo"
             >
-              <br />
-              <h2 className="featurette-heading">
-                What is <span className="text-muted">TimeTracker?</span>
-              </h2>
-              <p className="lead">
-                TimeTracker is a very intuitive tool to collect data of the time
-                dedicated to tasks related to the provision of services that
-                your organization performs.
-              </p>
-              <a href="/#more">
-                <button className="btn btn-success center">Learn More</button>
-              </a>
-              <br />
-            </div>
-            <div
-              className="col-md-5"
-              style={{ paddingTop: "40px", paddingBottom: "40px" }}
-            >
-              <img
-                className="featurette-image img-fluid mx-auto"
-                src={World}
-                alt="World"
-              />
+              <div
+                className="col-md-7"
+                style={{ paddingTop: "40px", paddingBottom: "40px" }}
+              >
+                <br />
+                <h2 className="featurette-heading">
+                  What is <span className="text-muted">TimeTracker?</span>
+                </h2>
+                <p className="lead">
+                  TimeTracker is a very intuitive tool to collect data of the
+                  time dedicated to tasks related to the provision of services
+                  that your organization performs.
+                </p>
+                <a href="/#more">
+                  <button className="btn btn-success center">Learn More</button>
+                </a>
+                <br />
+              </div>
+              <div
+                className="col-md-5"
+                style={{ paddingTop: "40px", paddingBottom: "40px" }}
+              >
+                <img
+                  className="featurette-image img-fluid mx-auto"
+                  src={World}
+                  alt="World"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        </Jumbotron>
         <Carousel>
           <Carousel.Item>
             <img className="d-block w-100" src={Time} alt="Time" height="650" />
@@ -91,8 +96,7 @@ class Home extends Component {
             className="row featurette"
             style={{ paddingBottom: "20px", paddingTop: "20px" }}
             id="howTo"
-          >
-          </div>
+          ></div>
           <hr
             className="featurette-divider"
             style={{ paddingTop: "40px", paddingBottom: "40px" }}
@@ -109,25 +113,25 @@ class Home extends Component {
           <hr
             id="more"
             className="featurette-divider"
-            style={{ paddingTop: "40px", paddingBottom: "40px" }}
+            style={{ paddingTop: "10px", paddingBottom: "10px" }}
           />
-          <div className="row props" style={{ paddingBottom: "60px" }}>
+          <div className="row props" style={{ paddingBottom: "30px" }}>
             <div
               className="col-lg-4"
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#004ECD",
+                backgroundColor: "#8860D0",
                 textAlign: "center",
                 alignItems: "center",
                 marginBottom: "3em",
-                color: "white",
+                color: "#fff",
               }}
             >
               <img
                 className="rounded-circle"
-                src="https://source.unsplash.com/random/900x900?woman"
-                alt=""
+                src={List}
+                alt="Time and Effort"
                 width="140"
                 height="140"
               />
@@ -147,17 +151,17 @@ class Home extends Component {
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#004E98",
+                backgroundColor: "#84CEEB",
                 textAlign: "center",
                 alignItems: "center",
                 marginBottom: "3em",
-                color: "white",
+                color: "#fff",
               }}
             >
               <img
                 className="rounded-circle"
-                src="https://source.unsplash.com/random/800x800?man"
-                alt=""
+                src={Tasks}
+                alt="Employees"
                 width="140"
                 height="140"
               />
@@ -177,17 +181,17 @@ class Home extends Component {
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#004E75",
+                backgroundColor: "#5680E9",
                 textAlign: "center",
                 alignItems: "center",
                 marginBottom: "3em",
-                color: "white",
+                color: "#fff",
               }}
             >
               <img
                 className="rounded-circle"
-                src="https://source.unsplash.com/random/800x800?woman"
-                alt=""
+                src={Dashboard}
+                alt="Reports"
                 width="140"
                 height="140"
               />
@@ -203,13 +207,18 @@ class Home extends Component {
           </div>
           <hr
             className="featurette-divider"
-            style={{ paddingTop: "40px", paddingBottom: "40px" }}
+            style={{ paddingTop: "15px", paddingBottom: "15px" }}
           />
 
           <div
             className="container"
-            style={{ paddingTop: "40px", paddingBottom: "40px" }}
-          ></div>
+            style={{ paddingTop: "15px", paddingBottom: "50px" }}
+            textAlign="center"
+          >
+            <Button block variant="warning" size="lg" className="mr-sm-2">
+              Schedule a Demo Today!
+            </Button>
+          </div>
         </div>
         <Footer />
       </React.Fragment>

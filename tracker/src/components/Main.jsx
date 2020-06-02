@@ -57,13 +57,10 @@ class Main extends Component {
                 </Card>
               </CardGroup>
             </div>
-            <div
-              className="footer-copyright text-center py-3"
-              
-            >
+            <div className="footer-copyright text-center py-3">
               Developed by:{" "}
               <a
-                style={{ color: "white" }}
+                style={{ color: "#fff" }}
                 href="https://riverapecunia.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -71,7 +68,7 @@ class Main extends Component {
                 Gustavo Rivera Pecunia
               </a>{" "}
               |{" "}
-              <Link style={{ color: "white" }} to="/">
+              <Link style={{ color: "#fff" }} to="/">
                 TimeTracker
               </Link>{" "}
               | All rights reserved © {new Date().getFullYear()}

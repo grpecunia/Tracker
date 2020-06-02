@@ -54,6 +54,9 @@ const Users = new Schema({
     type: String,
     default: "no@email.com",
   },
+  username: {
+      type: String
+  }
 });
 
 module.exports = mongoose.model("Users", Users);

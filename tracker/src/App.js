@@ -1,17 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from '../src/images/logo.png';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Navbar, NavDropdown, FormControl, Nav, Form } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Main from './components/Main';
 import Home from './components/Home'
+import Gear from './images/settings.png'
 
 
 function App() {
   return (
     <Router>
-      <Navbar bg="light" expand="lg">
+      <Navbar className="color-nav" variant="dark" expand="lg">
         <a
           className="navbar-brand"
           href="https://riverapecunia.com"
@@ -29,17 +30,22 @@ function App() {
             </Nav.Link>
 
             <Nav.Link href="/">Reports</Nav.Link>
-            <NavDropdown title="Settings" id="basic-nav-dropdown">
+            {/* <NavDropdown
+              title={
+                  <img className="thumbnail-image" src={Gear} alt="settings" height="25" />
+              }
+              id="basic-nav-dropdown"
+            >
               <NavDropdown.Item href="/">Employees</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/">Funds</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/">Tasks</NavDropdown.Item>
-              <NavDropdown.Divider />
+              {/* <NavDropdown.Divider />
               <NavDropdown.Item href="/">Budget</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Clients</NavDropdown.Item>
-            </NavDropdown>
+              <NavDropdown.Item href="/">Clients</NavDropdown.Item> */}
+            {/* </NavDropdown> */}
             <br />
           </Nav>
           <Form inline>
@@ -47,12 +53,35 @@ function App() {
               type="text"
               placeholder="Type your search..."
               className="mr-sm-2"
+              style={{marginBottom:"1em", marginTop:"1em"}}
             />
-            <Button variant="success" className="mr-sm-2">
+            <Button variant="warning" className="mr-sm-2">
               Search
             </Button>
-            <Button variant="danger">LogOut</Button>
+            <Button variant="success">Login</Button>
           </Form>
+          <NavDropdown
+            alignRight
+            title={
+              <img
+                className="thumbnail-image"
+                src={Gear}
+                alt="settings"
+                height="25"
+              />
+            }
+            id="basic-nav-dropdown"
+          >
+            <NavDropdown.Item href="/">Employees</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/">Funds</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/">Tasks</NavDropdown.Item>
+            {/* <NavDropdown.Divider />
+              <NavDropdown.Item href="/">Budget</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/">Clients</NavDropdown.Item> */}
+          </NavDropdown>
         </Navbar.Collapse>
       </Navbar>
       <Route path="/Main" exact component={Main} />
