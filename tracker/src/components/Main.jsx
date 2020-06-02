@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Card, CardGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Dashboard from "../images/dashboard.jpg"
+import Task from "../images/tasks.jpg";
+import List from "../images/list.jpg";
 
 class Main extends Component {
     render() {
@@ -13,8 +16,8 @@ class Main extends Component {
               <Card>
                 <Card.Img
                   variant="top"
-                  src="https://cdn1.iconfinder.com/data/icons/charts-analytics/128/Charts_Analytics_kpi_dashboard_report_3_pie-32-512.png"
-                  height="375"
+                  src={Dashboard}
+                  width="500em"
                 />
                 <Card.Body>
                   <Card.Title>Dashboard</Card.Title>
@@ -30,8 +33,8 @@ class Main extends Component {
               <Card>
                 <Card.Img
                   variant="top"
-                  src="https://image.flaticon.com/icons/svg/66/66163.svg"
-                  height="375"
+                  src={List}
+                  width="500em"
                 />
                 <Card.Body>
                   <Card.Title>Time Entries</Card.Title>
@@ -47,8 +50,8 @@ class Main extends Component {
               <Card as={Link} to="/" style={{ textDecoration: "none" }}>
                 <Card.Img
                   variant="top"
-                  src="https://img.icons8.com/cotton/2x/list.png"
-                  height="375"
+                  src={Task}
+                  width="500em"
                 />
                 <Card.Body style={{ color: "black" }}>
                   <Card.Title>Add Entry</Card.Title>

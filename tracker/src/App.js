@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Navbar, NavDropdown, FormControl, Nav, Form } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Main from './components/Main';
+import Home from './components/Home'
 
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to='/Main'>Main</Nav.Link>
+            <Nav.Link as={Link} to="/Main">
+              Main
+            </Nav.Link>
 
             <Nav.Link href="/">Reports</Nav.Link>
             <NavDropdown title="Settings" id="basic-nav-dropdown">
@@ -52,8 +55,8 @@ function App() {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-      {/* {/* <Route path="/" exact component={PlantHome} /> */}
       <Route path="/Main" exact component={Main} />
+      <Route path="/" exact component={Home} />
     </Router>
   );
 }
