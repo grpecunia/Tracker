@@ -8,7 +8,7 @@ class Footer extends Component {
         <footer
           className="page-footer font-small blue pt-4"
           style={{
-            backgroundColor: "black",
+            backgroundColor: "#004E98",
             paddingTop: "40px",
             paddingBottom: "20px",
             color: "white",
@@ -26,6 +26,9 @@ class Footer extends Component {
                   TimeTracker is a very intuitive tool to collect data of the
                   time dedicated to tasks related to the provision of services
                   that your organization performs. <br />
+                  <br />
+                  For more information about the application or if you want to get
+                  involved email us at: grpecunia[at]gmail.com
                 </p>
               </div>
 
@@ -38,7 +41,7 @@ class Footer extends Component {
                 className="col-md-3 mb-md-0 mb-3"
                 style={{ textAlign: "center" }}
               >
-                <h5 className="text-uppercase">Proudly Originated at</h5>
+                <h5 className="text-uppercase">Sponsored by</h5>
                 <br />
                 <a
                   href="https://pecuniagroup.com"
@@ -69,7 +72,7 @@ class Footer extends Component {
                       rel="noopener noreferrer"
                     >
                       {" "}
-                      Link #1
+                      Developer
                     </a>
                   </li>
                   <li>
@@ -78,16 +81,16 @@ class Footer extends Component {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Link #2
+                      Pecunia Group, Inc.
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://google.com/"
+                      href="https://github.com/grpecunia/Tracker"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Link #3
+                      GitHub
                     </a>
                   </li>
                   <li>
@@ -96,7 +99,7 @@ class Footer extends Component {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Link #4
+                      NPM
                     </a>
                   </li>
                 </ul>

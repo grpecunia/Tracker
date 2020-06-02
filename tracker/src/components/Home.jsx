@@ -8,6 +8,42 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
+        <div className="container">
+          <div
+            className="row featurette"
+            style={{ paddingBottom: "50px", paddingTop: "40px" }}
+            id="howTo"
+          >
+            <div
+              className="col-md-7"
+              style={{ paddingTop: "40px", paddingBottom: "40px" }}
+            >
+              <br />
+              <h2 className="featurette-heading">
+                What is <span className="text-muted">TimeTracker?</span>
+              </h2>
+              <p className="lead">
+                TimeTracker is a very intuitive tool to collect data of the time
+                dedicated to tasks related to the provision of services that
+                your organization performs.
+              </p>
+              <a href="/#more">
+                <button className="btn btn-success center">Learn More</button>
+              </a>
+              <br />
+            </div>
+            <div
+              className="col-md-5"
+              style={{ paddingTop: "40px", paddingBottom: "40px" }}
+            >
+              <img
+                className="featurette-image img-fluid mx-auto"
+                src={World}
+                alt="World"
+              />
+            </div>
+          </div>
+        </div>
         <Carousel>
           <Carousel.Item>
             <img className="d-block w-100" src={Time} alt="Time" height="650" />
@@ -53,37 +89,9 @@ class Home extends Component {
         <div className="container">
           <div
             className="row featurette"
-            style={{ paddingBottom: "50px", paddingTop: "40px" }}
+            style={{ paddingBottom: "20px", paddingTop: "20px" }}
             id="howTo"
           >
-            <div
-              className="col-md-7"
-              style={{ paddingTop: "40px", paddingBottom: "40px" }}
-            >
-              <br />
-              <h2 className="featurette-heading">
-                What is <span className="text-muted">TimeTracker?</span>
-              </h2>
-              <p className="lead">
-                TimeTracker is a very intuitive tool to collect data of the time
-                dedicated to tasks related to the provision of services that
-                your organization performs.
-              </p>
-              <a href="/#top">
-                <button className="btn btn-success center">Learn More</button>
-              </a>
-              <br />
-            </div>
-            <div
-              className="col-md-5"
-              style={{ paddingTop: "40px", paddingBottom: "40px" }}
-            >
-              <img
-                className="featurette-image img-fluid mx-auto"
-                src={World}
-                alt="World"
-              />
-            </div>
           </div>
           <hr
             className="featurette-divider"
@@ -99,18 +107,21 @@ class Home extends Component {
           <br></br>
           <br></br>
           <hr
+            id="more"
             className="featurette-divider"
             style={{ paddingTop: "40px", paddingBottom: "40px" }}
           />
           <div className="row props" style={{ paddingBottom: "60px" }}>
             <div
-              className="col-lg-3"
+              className="col-lg-4"
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#e9ecef",
+                backgroundColor: "#004ECD",
                 textAlign: "center",
                 alignItems: "center",
+                marginBottom: "3em",
+                color: "white",
               }}
             >
               <img
@@ -122,19 +133,25 @@ class Home extends Component {
               />
               <br />
               <br />
-              <h2>The CEO</h2>
+              <h2>Effort Tracking</h2>
               <br />
+              <p>
+                Keep track of your time with accuracy and precision on your
+                desktop, tablet or phone.
+              </p>
             </div>
             <br />
             <br />
             <div
-              className="col-lg-3 offset-1"
+              className="col-lg-4"
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#e9ecef",
+                backgroundColor: "#004E98",
                 textAlign: "center",
                 alignItems: "center",
+                marginBottom: "3em",
+                color: "white",
               }}
             >
               <img
@@ -146,19 +163,25 @@ class Home extends Component {
               />
               <br />
               <br />
-              <h2>The CTO</h2>
+              <h2>Employees</h2>
               <br />
+              <p>
+                Your employees will adapt quickly to this modern and easy to use
+                web application.
+              </p>
             </div>
             <br />
             <br />
             <div
-              className="col-lg-3 offset-1"
+              className="col-lg-4"
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#e9ecef",
+                backgroundColor: "#004E75",
                 textAlign: "center",
                 alignItems: "center",
+                marginBottom: "3em",
+                color: "white",
               }}
             >
               <img
@@ -170,8 +193,12 @@ class Home extends Component {
               />
               <br />
               <br />
-              <h2>The CFO</h2>
+              <h2>Reports</h2>
               <br />
+              <p>
+                Analyze productivity reports by service or clients with
+                customized data visualizations!
+              </p>
             </div>
           </div>
           <hr
