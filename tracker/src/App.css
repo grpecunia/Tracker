@@ -8,14 +8,11 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
 }
 
 .page {
   height: 100vh;
-}
-
-.App {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
 }
 
 .nav {
@@ -28,22 +25,21 @@ body {
   width: -moz-available;
   width: -webkit-fill-available;
   width: stretch;
-  /* height: 100%; */
   margin: 0;
 }
 
 .home {
   text-align: center;
-  padding-top: 30px;
+  /* padding-top: 30px; */
 }
 
 .home-text {
-  padding-top: 15px;
+  /* padding-top: 15px; */
   text-align: center;
 }
 
 .loading {
-  animation: blinkingText 1.2s infinite;
+   animation: stretch 1.5s ease-out 0s alternate infinite none running;
 }
 
 .loading:hover {
@@ -78,16 +74,24 @@ body {
 
 
 footer>div>div>div.col-md-6.mt-md-0.mt-3>p>a {
-  color: #fff
+  color: #fff;
+  margin-bottom: 5px;
 }
 
 footer>div>div>div:nth-child(4)>ul>li>a {
-  color: #fff
+  color: #fff;
+  margin-bottom: 5px;
+
 }
 
 .footer-copyright {
   background-color: #5AB9EA;
   color: #fff;
+}
+
+.li-footer {
+  /* padding-bottom: 5px; */
+  margin-top: 1.5em;
 }
 
 .row.props {
@@ -109,4 +113,6 @@ footer>div>div>div:nth-child(4)>ul>li>a {
 .jumbotron {
   margin-bottom: 0em !important;
   background-color: #fff !important;
+   padding: "0rem 5rem" !important;
 }
+

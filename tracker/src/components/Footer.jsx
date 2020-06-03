@@ -21,8 +21,10 @@ class Footer extends Component {
           >
             <div className="row" style={{ display: "align-space-evenly" }}>
               <div className="col-md-6 mt-md-0 mt-3">
-                <h5>About the TimeTracker Application</h5>
-                <p>
+                <h5 className="text-uppercase">
+                  About the TimeTracker Application
+                </h5>
+                <p className="li-footer">
                   TimeTracker is a very intuitive tool to collect data of the
                   time dedicated to tasks related to the provision of services
                   that your organization performs. <br />
@@ -65,35 +67,26 @@ class Footer extends Component {
                 </h5>
 
                 <ul className="list-unstyled" style={{ textAlign: "center" }}>
-                  <li>
+                  <li className="li-footer">
                     <a
                       href="https://riverapecunia.com"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {" "}
-                      Developer
+                      RiveraPecunia.com
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="https://pecuniagroup.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Pecunia Group, Inc.
-                    </a>
-                  </li>
-                  <li>
+                  <li className="li-footer">
                     <a
                       href="https://github.com/grpecunia/Tracker"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      GitHub
+                      GitHub Repository
                     </a>
                   </li>
-                  <li>
+                  <li className="li-footer">
                     <a
                       href="https://www.npmjs.com/package/axios"
                       target="_blank"
