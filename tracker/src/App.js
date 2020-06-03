@@ -4,8 +4,9 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Navbar, NavDropdown, FormControl, Nav, Form } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Main from './components/Main';
 import Home from './components/Home'
+import Main from './components/Main';
+import Entries from './components/Entries'
 import Gear from './images/settings.png'
 
 
@@ -53,7 +54,7 @@ function App() {
               type="text"
               placeholder="Type your search..."
               className="mr-sm-2"
-              style={{marginBottom:"1em", marginTop:"1em"}}
+              style={{ marginBottom: "1em", marginTop: "1em" }}
             />
             <Button variant="warning" className="mr-sm-2">
               Search
@@ -84,8 +85,9 @@ function App() {
           </NavDropdown>
         </Navbar.Collapse>
       </Navbar>
-      <Route path="/Main" exact component={Main} />
       <Route path="/" exact component={Home} />
+      <Route path="/Main" exact component={Main} />
+      <Route path="/Entries" exact component={Entries} />
     </Router>
   );
 }
