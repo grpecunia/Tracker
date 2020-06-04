@@ -18,7 +18,7 @@ class Main extends Component {
                 <Card>
                   <Card.Img variant="top" src={Dashboard} width="500em" />
                   <Card.Body>
-                    <Card.Title>Dashboard</Card.Title>
+                    <Card.Title>Reports</Card.Title>
                     <Card.Text>
                       Access the TimeTracker Dashboard where you can interact
                       with your time entry data.
@@ -28,9 +28,9 @@ class Main extends Component {
                   <small className="text-muted">Last updated 3 mins ago</small>
                 </Card.Footer> */}
                 </Card>
-                <Card>
+                <Card as={Link} to="/Entries" style={{ textDecoration: "none" }}>
                   <Card.Img variant="top" src={List} width="500em" />
-                  <Card.Body>
+                  <Card.Body style={{ color: "black" }}>
                     <Card.Title>Time Entries</Card.Title>
                     <Card.Text>
                       Browse through individual time entries to view details and

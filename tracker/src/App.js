@@ -22,7 +22,7 @@ function App() {
         >
           <img src={logo} width="30" height="30" alt="RiveraPecunia.com" />
         </a>
-        <Navbar.Brand href="/">TimeTracker</Navbar.Brand>
+        <Navbar.Brand href="/" style={{fontSize : "1.5rem"}}>TimeTracker</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

@@ -52,11 +52,20 @@ const Users = new Schema({
   },
   email: {
     type: String,
-    default: "no@email.com",
+    default: "email@company.com",
   },
   username: {
-      type: String
-  }
+    type: String,
+  },
+  secLevel: {
+    type: Number,
+    default: 0,
+  },
+  fundAccess_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Funds",
+    default: null
+  },
 });
 
 module.exports = mongoose.model("Users", Users);

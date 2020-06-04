@@ -16,15 +16,17 @@ const Entries = new Schema(
     notes: {
       type: String,
     },
-    activity: {
-      type: String,
+    activity_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Activities",
     },
-    fund: {
-      type: String,
+    fund_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Funds",
     },
-    timeEntered: { 
-        type: Date, 
-        default: Date.now 
+    timeEntered: {
+      type: Date,
+      default: Date.now,
     },
   },
   {
