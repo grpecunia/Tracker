@@ -15,7 +15,7 @@ const Funds = new Schema({
   source: {
     type: String,
   },
-  ammount: {
+  amount: {
     type: Number,
   },
 });

@@ -56,10 +56,10 @@ function App() {
               className="mr-sm-2"
               style={{ marginBottom: "1em", marginTop: "1em" }}
             />
-            <Button variant="warning" className="mr-sm-2">
+            <Button variant="info" className="mr-sm-2">
               Search
             </Button>
-            <Button variant="success">Login</Button>
+            <Button variant="primary">Login</Button>
           </Form>
           <NavDropdown
             alignRight

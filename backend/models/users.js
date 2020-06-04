@@ -20,11 +20,11 @@ const Users = new Schema({
   },
   hireDate: {
     type: Date,
-    default: "0001-01-01",
+    default: "2020-01-01",
   },
   terminationDate: {
     type: Date,
-    default: "0001-01-01",
+    default: null,
   },
   isActive: {
     type: Boolean,
@@ -33,6 +33,10 @@ const Users = new Schema({
   isManager: {
     type: Boolean,
     default: false,
+  },
+  manager: {
+    type: String,
+    default: null,
   },
   location: {
     type: String,
@@ -48,7 +52,10 @@ const Users = new Schema({
   },
   anualSalary: {
     type: Number,
-    default: 40000,
+    get: a = () => {
+      let b = weeklyHours * hourlyRate * 52;
+      return b;
+    }
   },
   email: {
     type: String,
@@ -66,6 +73,13 @@ const Users = new Schema({
     ref: "Funds",
     default: null
   },
+  fte: {
+    type: Number,
+    get: a = () => {
+      let b = weeklyHours/40;
+      return b;
+    }
+  }
 });
 
 module.exports = mongoose.model("Users", Users);

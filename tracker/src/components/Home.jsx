@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import { Carousel, Button, Jumbotron } from "react-bootstrap";
-// import World from "../images/world.png";
-import Time from "../images/time.jpeg"
 import List from "../images/list.jpg"
 import Dashboard from "../images/dashboard.jpg"
 import Tasks from "../images/tasks.jpg"
 import Footer from "./Footer";
 import logo from "../images/logo.png";
-import Teams from "../images/teams.jpg"
-import Remote from "../images/remote.jpg"
-import Effort from "../images/effort.jpg"
 import Banner from "../images/timetracking.png"
 import Banner1 from "../images/banner1.png"
 import Banner2 from "../images/banner2.png";

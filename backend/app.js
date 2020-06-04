@@ -7,6 +7,8 @@ require("dotenv").config();
 const PORT = 4000;
 let Users = require("./models/users.js")
 let Entries = require("./models/entries.js")
+let Activities = require("./models/activities.js")
+let Funds = require("./models/funds.js")
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -23,7 +25,7 @@ connection.once("open", () => {
 });
 
 app.listen(PORT, () => {
-  console.log("Node Server is running on Port: " + PORT);
+    console.log("Node Server is running on Port: " + PORT);
 });
 
 // Route for Getting ALL Users
@@ -33,6 +35,28 @@ app.get('/api/users', (req, res) => {
       console.log(err);
     } else {
       res.json(users);
+    }
+  });
+});
+
+// Route for Getting ALL Activities
+app.get('/api/activities', (req, res) => {
+  Activities.find((err, activity) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(activity);
+    }
+  });
+});
+
+// Route for Getting ALL Funds
+app.get('/api/funds', (req, res) => {
+  Funds.find((err, funds) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(funds);
     }
   });
 });
@@ -49,6 +73,31 @@ app.post('/api/users',(req, res) => {
         });
 });
 
+//Route to Create / Add NEW Activities
+app.post('/api/activities',(req, res) => {
+    let activity = new Activities(req.body);
+    activity
+      .save()
+      .then((activity) => {
+        res.status(200).json({ TimeTracker: "Activity added successfully" });
+      })
+      .catch((err) => {
+        res.status(400).send("Adding new Activity failed. Check for errors!");
+      });
+});
+
+//Route to Create / Add NEW Funds
+app.post('/api/funds',(req, res) => {
+    let fund = new Funds(req.body);
+    fund.save()
+        .then(fund => {
+            res.status(200).json({'TimeTracker': 'Fund added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('Adding new Fund failed. Check for errors!');
+        });
+});
+
 //Route for pull all available time entries
 app.get('/api/entries',(req, res) => {
     Entries.find((err, entries) => {
@@ -57,7 +106,7 @@ app.get('/api/entries',(req, res) => {
         } else {
             res.json(entries);
         }
-    });
+    }).populate('activity_id').populate('user_id').populate('fund_id')
 });
 
 //Route to DELETE individual Users
@@ -68,16 +117,35 @@ app.delete('/api/users/:id',(req, res) => {
     });
 });
 
+//Route to DELETE individual Activities
+app.delete('/api/activities/:id',(req, res) => {
+    let id = req.params.id;
+    Activities.findByIdAndDelete({ _id: id }, (err, activity) => {
+        res.json("Activity has been successfully deleted!");
+    });
+});
+
+//Route to DELETE individual Funds
+app.delete('/api/funds/:id',(req, res) => {
+    let id = req.params.id;
+    Funds.findByIdAndDelete({ _id: id }, (err, fund) => {
+        res.json("Fund has been successfully deleted!");
+    });
+});
+
 //Route to pull specific User Entries
 app.get('/api/entries/:id', (req, res) => {
     let id = req.params.id
-    Readings.findById({_id : id},(err, entries) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(entries);
-        }
-    });
+    Readings.findById({ _id: id }, (err, entries) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(entries);
+      }
+    })
+      .populate("activity_id")
+      .populate("user_id")
+      .populate("fund_id");
 });
 
 //Route to DELETE individual Entries
@@ -113,12 +181,13 @@ app.post('/api/:id/entries/',(req, res) => {
 });
 
 //Entry List Route for individual Users
-app.get('/api/:id/entries',(req, res) => {
-  let id = req.params.id;
-  Entries.find({user_id : id}, (err, entries) => {
-    res.json(entries);
-  }).sort({datestamp : -1})
-});
+app
+  .get("/api/:id/entries", (req, res) => {
+    let id = req.params.id;
+    Entries.find({ user_id: id }, (err, entries) => {
+      res.json(entries);
+    }).sort({ datestamp: -1 });
+  })
 
 //Route for individual Users
 app.get('/api/users/:id', (req, res) => {
@@ -129,7 +198,7 @@ app.get('/api/users/:id', (req, res) => {
 });
 
 //Route for updating individual Users
-app.post('/update/:id', (req, res) => {
+app.post('/api/users/update/:id', (req, res) => {
     Users.findById(req.params.id, (err, users) => {
         if (!users)
             res.status(404).send("Error TimeTracker-Fellow! Check with support group.");
@@ -158,7 +227,47 @@ app.post('/update/:id', (req, res) => {
                 res.status(400).send("Update were not possible. Check for errors!");
             });
     });
-});
+
+//Route for updating individual Activities
+app.post('/api/activities/update/:id', (req, res) => {
+    Activities.findById(req.params.id, (err, activity) => {
+        if (!activity)
+            res.status(404).send("Error TimeTracker-Fellow! Check with support group.");
+        else
+            activity.activityName = req.body.activityName;
+            activity.isActive = req.body.isActive;
+            activity.description = req.body.description;
+            activity.type = req.body.type;
+
+            activity.save().then(activity => {
+                res.json('Updates to Activity have been submitted!');
+            })
+            .catch(err => {
+                res.status(400).send("Update were not possible. Check for errors!");
+            });
+        });
+    });
+
+//Route for updating individual Activities
+app.post('/api/funds/update/:id', (req, res) => {
+    Funds.findById(req.params.id, (err, fund) => {
+        if (!fund)
+            res.status(404).send("Error TimeTracker-Fellow! Check with support group.");
+        else
+            fund.fundName = req.body.fundName;
+            fund.isActive = req.body.isActive;
+            fund.description = req.body.description;
+            fund.source = req.body.source;
+            fund.amount = req.body.amount;
+
+            fund.save().then(fund => {
+                res.json('Updates to Fund have been submitted!');
+            })
+            .catch(err => {
+                res.status(400).send("Update were not possible. Check for errors!");
+            });
+        });
+    });
 
 
-
+})
