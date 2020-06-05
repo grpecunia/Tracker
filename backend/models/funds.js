@@ -18,6 +18,10 @@ const Funds = new Schema({
   amount: {
     type: Number,
   },
+  createdTimeStamp: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Funds", Funds);

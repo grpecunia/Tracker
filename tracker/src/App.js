@@ -6,6 +6,9 @@ import { Button, Navbar, NavDropdown, FormControl, Nav, Form } from 'react-boots
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './components/Home'
 import Main from './components/Main';
+import Funds from './components/Funds'
+import Users from './components/Users'
+import Activities from './components/Activities'
 import Entries from './components/Entries'
 import Gear from './images/settings.png'
 
@@ -22,7 +25,9 @@ function App() {
         >
           <img src={logo} width="30" height="30" alt="RiveraPecunia.com" />
         </a>
-        <Navbar.Brand href="/" style={{fontSize : "1.5rem"}}>TimeTracker</Navbar.Brand>
+        <Navbar.Brand href="/" style={{ fontSize: "1.5rem" }}>
+          TimeTracker
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -73,11 +78,11 @@ function App() {
             }
             id="basic-nav-dropdown"
           >
-            <NavDropdown.Item href="/">Employees</NavDropdown.Item>
+            <NavDropdown.Item href="/Users">Employees</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/">Funds</NavDropdown.Item>
+            <NavDropdown.Item href="/Funds">Funds</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/">Tasks</NavDropdown.Item>
+            <NavDropdown.Item href="/Activities">Tasks</NavDropdown.Item>
             {/* <NavDropdown.Divider />
               <NavDropdown.Item href="/">Budget</NavDropdown.Item>
               <NavDropdown.Divider />
@@ -88,6 +93,9 @@ function App() {
       <Route path="/" exact component={Home} />
       <Route path="/Main" exact component={Main} />
       <Route path="/Entries" exact component={Entries} />
+      <Route path="/Users" exact component={Users} />
+      <Route path="/Funds" exact component={Funds} />
+      <Route path="/Activities" exact component={Activities} />
     </Router>
   );
 }
