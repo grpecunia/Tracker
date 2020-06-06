@@ -20,7 +20,7 @@ const Users = new Schema({
   },
   hireDate: {
     type: Date,
-    default: "2020-01-01",
+    default: Date.now,
   },
   terminationDate: {
     type: Date,
@@ -52,10 +52,10 @@ const Users = new Schema({
   },
   anualSalary: {
     type: Number,
-    get: a = () => {
+    get: (a = () => {
       let b = weeklyHours * hourlyRate * 52;
       return b;
-    }
+    }),
   },
   email: {
     type: String,
@@ -68,18 +68,24 @@ const Users = new Schema({
     type: Number,
     default: 0,
   },
-  fundAccess_id: {
+  fundAccess_id: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Funds",
-    default: null
+    default: null,
+  }],
+  createdDate: {
+    type: Date,
+    default: Date.now,
   },
-  fte: {
-    type: Number,
-    get: a = () => {
-      let b = weeklyHours/40;
-      return b;
-    }
+  lastUpdateDate: {
+    type: Date,
+    default: Date.now,
+  },
+},
+  {
+    timestamps: true,
+    versionKey: false
   }
-});
+);
 
 module.exports = mongoose.model("Users", Users);

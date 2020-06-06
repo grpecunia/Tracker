@@ -22,6 +22,10 @@ const Funds = new Schema({
     type: Date,
     default: Date.now,
   },
+  lastUpdateDate: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Funds", Funds);

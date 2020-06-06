@@ -28,6 +28,10 @@ const Entries = new Schema(
       type: Date,
       default: Date.now,
     },
+    lastUpdateDate: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     timestamp: true,

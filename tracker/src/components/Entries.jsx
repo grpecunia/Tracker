@@ -55,17 +55,32 @@ class Entries extends Component {
       });
   }
 
+  //Formating date for table chart - If need the return can be switch for user customization.
+  // formatDate = (d) => {
+  //     let date = new Date(d)
+  //     var dd = date.getDate(); 
+  //     var mm = date.getMonth()+1;
+  //     var yyyy = date.getFullYear(); 
+  //     if(dd<10){dd='0'+dd} 
+  //     if(mm<10){mm='0'+mm};
+  //     return d = mm+'/'+dd+'/'+yyyy
+  //   }
+
   entryList() {
     return this.state.entries.map((entries, i) => {
       let fund = entries.fund_id;
       let activity = entries.activity_id;
+      let name = entries.user_id
+
       return (
         <tr key={i}>
-          <td>{entries.datestamp.slice(0, 10)}</td>
+          <td>{entries.datestamp.slice(0,10)}</td>
+          <td>{name.firstName + " " + name.lastName}</td>
           <td>{fund.fundName}</td>
           <td>{activity.activityName}</td>
-          <td>{entries.duration} hrs</td>
-          <td><Button variant="warning">{" "}View / Edit{" "}</Button>
+          <td>{entries.duration.toFixed(1)} hrs</td>
+          <td>
+            <Button variant="warning"> View / Edit </Button>
           </td>
         </tr>
       );
@@ -113,10 +128,21 @@ class Entries extends Component {
       duration: this.state.duration,
       notes: this.state.notes,
     };
+    let newRow = {
+      datestamp: this.state.datestamp,
+      user_id: this.state.user_id.firstName,
+      fund_id: this.state.fund_id.fundName,
+      activity_id: this.state.activity_id.activityName,
+      duration: this.state.duration,
+      notes: this.state.notes,
+    };
 
+    
     axios
-      .post(`http://localhost:4000/api/${this.state.user_id}/entries`, newEntry)
-      .then((res) => console.log(res.data));
+    .post(`http://localhost:4000/api/${this.state.user_id}/entries`, newEntry)
+    .then((res) => console.log(res.data));
+    
+    this.state.entries.push(newRow)
 
     this.setState({
       datestamp: " ",
@@ -212,9 +238,9 @@ class Entries extends Component {
                       <Form.Control
                         name="user_id"
                         as="select"
-                        placeholder="Select User"
                         onChange={this.handleChange}
                       >
+                        <option> </option>
                         {this.userOptions()}
                       </Form.Control>
                     </Col>
@@ -229,6 +255,7 @@ class Entries extends Component {
                         as="select"
                         onChange={this.handleChange}
                       >
+                        <option> </option>
                         {this.fundsOptions()}
                       </Form.Control>
                     </Col>
@@ -239,6 +266,7 @@ class Entries extends Component {
                         as="select"
                         onChange={this.handleChange}
                       >
+                        <option> </option>
                         {this.activitiesOptions()}
                       </Form.Control>
                     </Col>
@@ -342,6 +370,7 @@ class Entries extends Component {
               <thead>
                 <tr>
                   <th>Date</th>
+                  <th>User</th>
                   <th>Funding Source</th>
                   <th>Activity</th>
                   <th>Duration</th>

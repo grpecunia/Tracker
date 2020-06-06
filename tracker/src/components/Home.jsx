@@ -212,8 +212,8 @@ class Home extends Component {
 
           <div
             className="container"
-            style={{ paddingTop: "15px", paddingBottom: "50px" }}
-            textAlign="center"
+            style={{ paddingTop: "15px", paddingBottom: "50px", textAlign: "center" }}
+            
           >
             <Button block variant="warning" size="lg" className="mr-sm-2">
               Schedule a Demo Today!
