@@ -44,7 +44,7 @@ class Activities extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let newFund = {
+    let newActivity = {
       activityName: this.state.activityName,
       isActive: this.state.isActive,
       description: this.state.description,
@@ -52,17 +52,16 @@ class Activities extends Component {
     };
 
     axios
-      .post(`http://localhost:4000/api/funds`, newFund)
+      .post(`http://localhost:4000/api/activities`, newActivity)
       .then((res) => console.log(res.data))
-      .then(
+      
         this.setState({
           activityName: " ",
           isActive: " ",
           description: " ",
           type: " ",
           show: false,
-        }).then(console.log("submit cleared"))
-      );
+        })
   };
 
   activitiesList() {
@@ -139,15 +138,6 @@ class Activities extends Component {
                       onChange={this.handleChange}
                     />
                   </Col>
-                  {/* <Col className="col-lg-4">
-                    <Form.Label>Amount</Form.Label>
-                    <Form.Control
-                      name="amount"
-                      type="number"
-                      className="form-control"
-                      onChange={this.handleChange}
-                    />
-                  </Col> */}
                 </Row>
               </FormGroup>
               <FormGroup>

@@ -106,7 +106,7 @@ app.get('/api/entries',(req, res) => {
         } else {
             res.json(entries);
         }
-    }).populate('activity_id').populate('user_id').populate('fund_id')
+    }).populate('activity_id user_id fund_id')
 });
 
 //Route to DELETE individual Users
@@ -165,8 +165,8 @@ app.post('/api/:id/entries/',(req, res) => {
         else
             entries.user_id = req.body.user_id;
             entries.datestamp = req.body.datestamp;
-            entries.activity = req.body.activity;
-            entries.fund = req.body.fund;
+            entries.activity_id = req.body.activity_id;
+            entries.fund_id = req.body.fund_id;
             entries.duration = req.body.duration;
             entries.notes = req.body.notes;
 
