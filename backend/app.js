@@ -36,7 +36,7 @@ app.get('/api/users', (req, res) => {
     } else {
       res.json(users);
     }
-  });
+  }).populate("fundAccess_id");
 });
 
 // Route for Getting ALL Activities

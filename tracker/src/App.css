@@ -30,42 +30,10 @@ body {
 
 .home {
   text-align: center;
-  /* padding-top: 30px; */
 }
 
 .home-text {
-  /* padding-top: 15px; */
   text-align: center;
-}
-
-.loading {
-   animation: stretch 1.5s ease-out 0s alternate infinite none running;
-}
-
-.loading:hover {
-  animation: none;
-}
-
-@keyframes blinkingText {
-  0% {
-    color: #000;
-  }
-
-  49% {
-    color: #000;
-  }
-
-  60% {
-    color: transparent;
-  }
-
-  99% {
-    color: transparent;
-  }
-
-  100% {
-    color: #000;
-  }
 }
 
 .modal-header {
@@ -116,3 +84,21 @@ footer>div>div>div:nth-child(4)>ul>li>a {
    padding: "0rem 5rem" !important;
 }
 
+.table td {
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle !important;
+}
+
+.table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.mt20 {
+  margin-top: 2em;
+}
+
+.pagetitle {
+  padding-top: 0.5em;
+}

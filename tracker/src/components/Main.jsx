@@ -15,20 +15,11 @@ class Main extends Component {
               style={{ marginTop: 30, marginBottom: 30, textAlign: "center" }}
             >
               <CardGroup>
-                <Card>
-                  <Card.Img variant="top" src={Dashboard} width="500em" />
-                  <Card.Body>
-                    <Card.Title>Reports</Card.Title>
-                    <Card.Text>
-                      Access the TimeTracker Dashboard where you can interact
-                      with your time entry data.
-                    </Card.Text>
-                  </Card.Body>
-                  {/* <Card.Footer>
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </Card.Footer> */}
-                </Card>
-                <Card as={Link} to="/Entries" style={{ textDecoration: "none" }}>
+                <Card
+                  as={Link}
+                  to="/Entries"
+                  style={{ textDecoration: "none" }}
+                >
                   <Card.Img variant="top" src={List} width="500em" />
                   <Card.Body style={{ color: "black" }}>
                     <Card.Title>Time Entries</Card.Title>
@@ -37,9 +28,6 @@ class Main extends Component {
                       make any necessary changes.
                     </Card.Text>
                   </Card.Body>
-                  {/* <Card.Footer>
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </Card.Footer> */}
                 </Card>
                 <Card as={Link} to="/" style={{ textDecoration: "none" }}>
                   <Card.Img variant="top" src={Task} width="500em" />
@@ -51,9 +39,16 @@ class Main extends Component {
                       related tasks.
                     </Card.Text>
                   </Card.Body>
-                  {/* <Card.Footer>
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </Card.Footer> */}
+                </Card>
+                <Card>
+                  <Card.Img variant="top" src={Dashboard} width="500em" />
+                  <Card.Body>
+                    <Card.Title>Reports</Card.Title>
+                    <Card.Text>
+                      Access the TimeTracker Dashboard where you can interact
+                      with your time entry data.
+                    </Card.Text>
+                  </Card.Body>
                 </Card>
               </CardGroup>
             </div>

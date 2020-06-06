@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from '../src/images/logo.png';
-import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Navbar, NavDropdown, FormControl, Nav, Form } from 'react-bootstrap';
+import './App.css';
+import { Button, Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './components/Home'
 import Main from './components/Main';
@@ -14,6 +14,7 @@ import Gear from './images/settings.png'
 
 
 function App() {
+  
   return (
     <Router>
       <Navbar className="color-nav" variant="dark" expand="lg">
@@ -34,38 +35,14 @@ function App() {
             <Nav.Link as={Link} to="/Main">
               Main
             </Nav.Link>
-
             <Nav.Link href="/">Reports</Nav.Link>
-            {/* <NavDropdown
-              title={
-                  <img className="thumbnail-image" src={Gear} alt="settings" height="25" />
-              }
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item href="/">Employees</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Funds</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Tasks</NavDropdown.Item>
-              {/* <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Budget</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Clients</NavDropdown.Item> */}
-            {/* </NavDropdown> */}
-            <br />
           </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Type your search..."
-              className="mr-sm-2"
-              style={{ marginBottom: "1em", marginTop: "1em" }}
-            />
-            <Button variant="info" className="mr-sm-2">
-              Search
+          
+           
+            <Button variant="primary" style={{ marginLeft: "0.2em" }}>
+              Login
             </Button>
-            <Button variant="primary">Login</Button>
-          </Form>
+         
           <NavDropdown
             alignRight
             title={
@@ -78,7 +55,7 @@ function App() {
             }
             id="basic-nav-dropdown"
           >
-            <NavDropdown.Item href="/Users">Employees</NavDropdown.Item>
+            <NavDropdown.Item href="/Users">Users</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="/Funds">Funds</NavDropdown.Item>
             <NavDropdown.Divider />
