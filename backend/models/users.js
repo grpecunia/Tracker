@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const PLM = require("passport-local-mongoose");
 
-const Users = new Schema({
+
+const userSchema = new Schema({
   firstName: {
     type: String,
   },
@@ -59,10 +61,6 @@ const Users = new Schema({
   },
   email: {
     type: String,
-    default: "email@company.com",
-  },
-  username: {
-    type: String,
   },
   secLevel: {
     type: Number,
@@ -88,4 +86,5 @@ const Users = new Schema({
   }
 );
 
-module.exports = mongoose.model("Users", Users);
+userSchema.plugin(PLM, { usernameField: "email" });
+module.exports = mongoose.model("Users", userSchema);

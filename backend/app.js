@@ -5,6 +5,13 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const PORT = 4000;
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const path = require("path");
+const session = require("express-session");
+const passport = require("./config/passport");
+
+
 let Users = require("./models/users.js")
 let Entries = require("./models/entries.js")
 let Activities = require("./models/activities.js")
@@ -13,6 +20,62 @@ let Funds = require("./models/funds.js")
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: "secret",
+    cookie: { maxAge: 1000 * 60 * 60 },
+  })
+);
+
+
+const allowCrossDomain = (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000/");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+};
+
+app.use(allowCrossDomain);
+// app.use(
+//   cors({
+//     //Fix for the cors origin errors
+//     origin: [
+//       "http://localhost:3000",
+//     ],
+//     optionsSuccessStatus: 200,
+//     // credentials: true,
+//   })
+// );
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      return callback(null, true);
+    },
+    optionsSuccessStatus: 200,
+    credentials: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(logger("dev"));
+
+const index = require("./routes/index");
+const auth = require("./routes/auth");
+app.use("/", index);
+app.use("/", auth);
+
+// Uncomment this line for production
+let client = path.join(__dirname + "../public/index.html");
+console.log("client", client);
 
 mongoose.connect(process.env.DB_CONNECTION, {
   useNewUrlParser: true,
@@ -36,7 +99,7 @@ app.get('/api/users', (req, res) => {
     } else {
       res.json(users);
     }
-  }).populate("fundAccess_id");
+  })
 });
 
 // Route for Getting ALL Activities
@@ -143,9 +206,7 @@ app.get('/api/entries/:id', (req, res) => {
         res.json(entries);
       }
     })
-      .populate("activity_id")
-      .populate("user_id")
-      .populate("fund_id");
+      .populate("activity_id user_id fund_id");
 });
 
 //Route to DELETE individual Entries
