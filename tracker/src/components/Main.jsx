@@ -13,7 +13,6 @@ class Main extends Component {
   async componentDidMount() {  
     let user = await actions.isLoggedIn();
       this.setState({ ...user.data });
-    
   }
 
 
