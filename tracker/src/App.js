@@ -27,8 +27,8 @@ class App extends Component {
   componentDidMount() {
     let user = actions.isLoggedIn();
     this.setState({ ...user.data });
-    console.log("Current User >> ", user);
-    console.log(this.state);
+    // console.log("Current User >> ", user);
+    // console.log(this.state);
 
     axios
       .get(`http://localhost:4000/api/users/`)
@@ -101,6 +101,28 @@ class App extends Component {
                     Log Out
                   </Button>
                 </Form>
+                <NavDropdown
+                  alignRight
+                  title={
+                    <img
+                      className="thumbnail-image"
+                      src={Gear}
+                      alt="settings"
+                      height="25"
+                    />
+                  }
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item href="/Users">Users</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/Funds">Funds</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/Activities">Tasks</NavDropdown.Item>
+                  {/* <NavDropdown.Divider />
+              <NavDropdown.Item href="/">Budget</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/">Clients</NavDropdown.Item> */}
+                </NavDropdown>
               </Fragment>
             ) : (
               <Fragment>
@@ -118,42 +140,50 @@ class App extends Component {
                 </Form>
               </Fragment>
             )}
-
-            <NavDropdown
-              alignRight
-              title={
-                <img
-                  className="thumbnail-image"
-                  src={Gear}
-                  alt="settings"
-                  height="25"
-                />
-              }
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item href="/Users">Users</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/Funds">Funds</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/Activities">Tasks</NavDropdown.Item>
-              {/* <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Budget</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Clients</NavDropdown.Item> */}
-            </NavDropdown>
           </Navbar.Collapse>
         </Navbar>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/Main" render={(props) => (<Main {...props} setUser={this.setUser} user={this.state} />)}/>
-          <Route path="/Entries" exact render={(props) => (<Entries {...props} setUser={this.setUser} user={this.state} />)} />
-          <Route path="/Users" exact render={(props) => (<Users {...props} setUser={this.setUser} user={this.state} />)} />
-          <Route path="/Funds" exact render={(props) => (<Funds {...props} setUser={this.setUser} user={this.state} />)} />
-          <Route path="/Activities" exact render={(props) => (<Activities {...props} setUser={this.setUser} user={this.state} />)} />
+          <Route
+            path="/Main"
+            render={(props) => (
+              <Main {...props} setUser={this.setUser} user={this.state} />
+            )}
+          />
+          <Route
+            path="/Entries"
+            exact
+            render={(props) => (
+              <Entries {...props} setUser={this.setUser} user={this.state} />
+            )}
+          />
+          <Route
+            path="/Users"
+            exact
+            render={(props) => (
+              <Users {...props} setUser={this.setUser} user={this.state} />
+            )}
+          />
+          <Route
+            path="/Funds"
+            exact
+            render={(props) => (
+              <Funds {...props} setUser={this.setUser} user={this.state} />
+            )}
+          />
+          <Route
+            path="/Activities"
+            exact
+            render={(props) => (
+              <Activities {...props} setUser={this.setUser} user={this.state} />
+            )}
+          />
           <Route
             path="/LogIn"
             exact
-            render={(props) => <LogIn {...props} setUser={this.setUser} />}
+            render={(props) => (
+              <LogIn {...props} setUser={this.setUser} user={this.state} />
+            )}
           />
         </Switch>
       </Router>

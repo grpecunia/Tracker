@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { Card, CardGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Dashboard from "../images/dashboard.jpg"
 import Task from "../images/tasks.jpg";
 import List from "../images/list.jpg";
-import actions from "../services/index";
 
 
 
 class Main extends Component {
-  
-  async componentDidMount() {  
-    let user = await actions.isLoggedIn();
-      this.setState({ ...user.data });
-  }
-
 
     render() {
-        return (
+      // console.log(this.props.user)
+
+    if (this.props.user.email) {
+      return (
           <React.Fragment>
             <div
               className="container"
@@ -78,8 +74,16 @@ class Main extends Component {
               | All rights reserved © {new Date().getFullYear()}
             </div>
           </React.Fragment>
-        );
+        )
+
+        } else {
+      return (
+          <Redirect
+            to={{ pathname: "/LogIn" }}
+          />
+      );
     }
+  }
 }
 
 export default Main;

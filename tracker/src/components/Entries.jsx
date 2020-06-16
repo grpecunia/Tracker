@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Button, Table, Form, FormControl, Container, Row, Col, Modal, FormGroup } from "react-bootstrap";
 import axios from "axios";
 
@@ -75,7 +75,7 @@ class Entries extends Component {
       return (
         <tr key={i}>
           <td>{entries.datestamp.slice(0,10)}</td>
-          <td>{name.firstName + " " + name.lastName}</td>
+          <td>{name.email}</td>
           <td>{fund.fundName}</td>
           <td>{activity.activityName}</td>
           <td>{entries.duration.toFixed(1)} hrs</td>
@@ -205,8 +205,8 @@ class Entries extends Component {
   }
 
   render() {
-    console.log(this.state);
-    if (this.state.entries !== []) {
+    // console.log(this.state);
+    if (this.props.user.email) {
       return (
         <React.Fragment>
           <Modal
@@ -383,7 +383,7 @@ class Entries extends Component {
         </React.Fragment>
       );
     } else {
-      return "Loading...";
+      return <Redirect to={{ pathname: "/LogIn" }} />;
     }
   }
 }

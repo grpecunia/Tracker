@@ -44,7 +44,7 @@ class Users extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <Container style={{ marginTop: "2em" }}>
         <Row>

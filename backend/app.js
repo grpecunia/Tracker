@@ -12,10 +12,11 @@ const session = require("express-session");
 const passport = require("./config/passport");
 
 
-let Users = require("./models/users.js")
-let Entries = require("./models/entries.js")
-let Activities = require("./models/activities.js")
-let Funds = require("./models/funds.js")
+
+const Users = require("./models/users.js")
+const Entries = require("./models/entries.js")
+const Activities = require("./models/activities.js")
+const Funds = require("./models/funds.js")
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -24,7 +25,7 @@ app.use(
   session({
     resave: false,
     saveUninitialized: true,
-    secret: "secret",
+    secret: "secreto",
     cookie: { maxAge: 1000 * 60 * 60 },
   })
 );
@@ -61,7 +62,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "../tracker/build")));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -169,7 +170,7 @@ app.get('/api/entries',(req, res) => {
         } else {
             res.json(entries);
         }
-    }).populate('activity_id user_id fund_id')
+    }).populate('activity_id').populate("user_id").populate("fund_id");
 });
 
 //Route to DELETE individual Users
