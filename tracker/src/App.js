@@ -75,20 +75,26 @@ class App extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/Main">
-                Main
-              </Nav.Link>
-              <Nav.Link href="/">Reports</Nav.Link>
+              {this.state._id !== null ? (
+                <Fragment>
+                  <Nav.Link as={Link} to="/Main">
+                    Main
+                  </Nav.Link>
+                  <Nav.Link href="/">Reports</Nav.Link>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <Nav.Link as={Link} to="/About">
+                    About
+                  </Nav.Link>
+                </Fragment>
+              )}
             </Nav>
 
             {this.state._id !== null ? (
               <Fragment>
                 <Form inline>
-                  <Button
-                    //  as={Link}
-                    //  to="/profile/admin/dashboard"
-                    variant="primary mr-1"
-                  >
+                  <Button as={Link} to="/Main" variant="primary mr-1">
                     {this.state.email}
                   </Button>
                   <Button
@@ -113,7 +119,7 @@ class App extends Component {
                   }
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item href="/Users">Users</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Users">Users</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/Funds">Funds</NavDropdown.Item>
                   <NavDropdown.Divider />

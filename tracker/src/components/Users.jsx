@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Row, Col, Container, Table } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 class Users extends Component {
@@ -44,6 +45,7 @@ class Users extends Component {
   }
 
   render() {
+    if (this.props.user.email) {
     // console.log(this.state)
     return (
       <Container style={{ marginTop: "2em" }}>
@@ -72,6 +74,10 @@ class Users extends Component {
         </Table>
       </Container>
     );
+  } 
+  else {
+    return <Redirect to={{ pathname: "/LogIn" }} />;
+  }
   }
 }
 
