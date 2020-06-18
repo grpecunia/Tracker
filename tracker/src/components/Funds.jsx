@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Table, Row, Col, Container, Modal, Form, FormGroup, Badge } from "react-bootstrap";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
+
 
 class Funds extends Component {
   state = {
@@ -129,8 +131,7 @@ class Funds extends Component {
   };
 
   render() {
-    const { funds, isLoading } = this.state;
-    console.log(this.state);
+    if (this.props.user.email) {
     return (
       <React.Fragment>
         <Modal
@@ -145,7 +146,7 @@ class Funds extends Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={this.handleSubmit} funds={funds} isLoading={isLoading}>
+            <Form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <Row>
                   <Col className="col-lg-10">
@@ -275,6 +276,10 @@ class Funds extends Component {
         </Container>
       </React.Fragment>
     );
+  }
+  else {
+    return <Redirect to={{ pathname: "/LogIn" }} />;
+  }
   }
 }
 

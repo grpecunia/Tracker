@@ -119,11 +119,17 @@ class App extends Component {
                   }
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item as={Link} to="/Users">Users</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Users">
+                    Users
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/Funds">Funds</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Funds">
+                    Funds
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/Activities">Tasks</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/Activities">
+                    Tasks
+                  </NavDropdown.Item>
                   {/* <NavDropdown.Divider />
               <NavDropdown.Item href="/">Budget</NavDropdown.Item>
               <NavDropdown.Divider />
