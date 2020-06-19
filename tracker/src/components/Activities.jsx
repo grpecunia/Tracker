@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Button, Row, Col, Container, Table, Form, FormGroup, Modal } from "react-bootstrap";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
+
 
 class Activities extends Component {
   state = {
@@ -88,7 +90,8 @@ class Activities extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
+if (this.props.user.email) {
     return (
       <React.Fragment>
         <Modal
@@ -191,6 +194,10 @@ class Activities extends Component {
         </Container>
       </React.Fragment>
     );
+  }
+  else {
+    return <Redirect to={{ pathname: "/LogIn" }} />;
+  }
   }
 }
 
