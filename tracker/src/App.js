@@ -14,6 +14,7 @@ import Entries from './components/Entries'
 import Gear from './images/settings.png'
 import axios from "axios";
 import actions from "./services/index";
+import Clocker from "./components/Clocker";
 
 class App extends Component {
   
@@ -195,6 +196,13 @@ class App extends Component {
             exact
             render={(props) => (
               <LogIn {...props} setUser={this.setUser} user={this.state} />
+            )}
+          />
+          <Route
+            path="/Clocker"
+            exact
+            render={(props) => (
+              <Clocker {...props} setUser={this.setUser} user={this.state} />
             )}
           />
         </Switch>

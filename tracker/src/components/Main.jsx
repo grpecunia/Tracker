@@ -34,14 +34,12 @@ class Main extends Component {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-                <Card as={Link} to="/" style={{ textDecoration: "none" }}>
+                <Card as={Link} to="/Clocker" style={{ textDecoration: "none" }}>
                   <Card.Img variant="top" src={Task} width="500em" />
                   <Card.Body style={{ color: "black" }}>
-                    <Card.Title>Add Entry</Card.Title>
+                    <Card.Title>Clock-In/Out</Card.Title>
                     <Card.Text>
-                      Log your project activities and select the correct
-                      allocation specific to your activities and/or other
-                      related tasks.
+                      Clock In and Out for the day. You can also use this same method to add breaks and food interludes throughout the day.
                     </Card.Text>
                   </Card.Body>
                 </Card>
