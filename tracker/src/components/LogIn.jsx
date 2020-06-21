@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import actions from "../services/index";
 import logo from "../images/logo.png";
-import { Button, Modal, Form, Container, Row, Col } from "react-bootstrap";
+import { Button, Modal, Form, Container, Row, Col, InputGroup } from "react-bootstrap";
 
 class LogIn extends Component {
   
@@ -49,19 +49,17 @@ class LogIn extends Component {
               <strong>Error on Login!</strong>
             </Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            Something wrong bro!
-          </Modal.Body>
+          <Modal.Body>Something wrong bro!</Modal.Body>
         </Modal>
 
         <Container style={{ marginTop: "2em" }}>
           <Row style={{ marginBottom: "1em" }}>
-          <Col xs={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 3 }}>
-            <h4 className="featurette-heading" style={{ fontSize: "4rem" }}>
-              {" "}
-              <img src={logo} width="75" className="brand_logo" alt="Logo" />
-              TimeTracker
-            </h4>
+            <Col xs={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 3 }}>
+              <h4 className="featurette-heading" style={{ fontSize: "4rem" }}>
+                {" "}
+                <img src={logo} width="75" className="brand_logo" alt="Logo" />
+                TimeTracker
+              </h4>
             </Col>
           </Row>
 
@@ -69,42 +67,40 @@ class LogIn extends Component {
             <Row>
               <Col xs={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 3 }}>
                 <Form.Group>
-                  <Form.Control
-                    placeholder="Username..."
-                    style={{
-                      border: "0",
-                      outline: "0",
-                      background: "transparent",
-                      borderBottom: "0.15rem solid #e5e6e7",
-                      borderRadius: "0",
-                    }}
-                    name="email"
-                    type="email"
-                    onChange={this.handleChange}
-                  />
-                  <Form.Control
-                    placeholder="Password..."
-                    style={{
-                      border: "0",
-                      outline: "0",
-                      background: "transparent",
-                      borderBottom: "0.15rem solid #e5e6e7",
-                      borderRadius: "0",
-                    }}
-                    name="password"
-                    type="password"
-                    onChange={this.handleChange}
-                  />
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <InputGroup.Text id="basic-addon1"> 👤 </InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <Form.Control
+                      placeholder="Username..."
+                      name="email"
+                      type="email"
+                      aria-describedby="basic-addon1"
+                      onChange={this.handleChange}
+                    />
+                  </InputGroup>
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <InputGroup.Text id="basic-addon2"> 🔒</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <Form.Control
+                      placeholder="Password..."
+                      name="password"
+                      type="password"
+                      aria-describedby="basic-addon2"
+                      onChange={this.handleChange}
+                    />
+                  </InputGroup>
                 </Form.Group>
-            <br/>
-            <Button
-              block
-              type="submit"
-              value="Log In"
-              style={{ borderColor: "#e5e6e7", color: "#e5e6e7"}}
-            >
-              Log In
-            </Button>
+                <br />
+                <Button
+                  block
+                  type="submit"
+                  value="Log In"
+                  style={{ borderColor: "#e5e6e7", color: "#e5e6e7" }}
+                >
+                  Log In
+                </Button>
               </Col>
             </Row>
           </Form>
