@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button } from "react-bootstrap";
+import axios from "axios";
+
 // import { Link, Redirect } from "react-router-dom";
 
 // let time = new Date().toLocaleString();
@@ -10,7 +12,10 @@ class Clocker extends Component {
         timeStamp : null,
         date: null,
         time: null,
-        ip: {},
+        ip: "Not Set",
+        city: "City",
+        state: "State",
+        country: "Country"
     }
   
   componentDidMount() {
@@ -23,17 +28,21 @@ class Clocker extends Component {
         }, 1000);
   }
 
-  fetchIP = () => {
-    fetch("https://aqueous-wave-46255.herokuapp.com/https://geoip-db.com/json/")
-      .then((res) => res.json())
-      .then((json) => {
-        this.setState({ ip: json.IPv4 });
-      });
-    }
+  getLocation = () => {
+    axios.get("https://geoip-db.com/json/")
+            .then((res) => {
+             this.setState({ ip: res.data.IPv4,
+                            city: res.data.city,
+                            state: res.data.state,
+                            postal: res.data.postal, 
+                            country: res.data.country_code
+                        });
+                });
+            }
   
 
    determineClockType = (e) => {
-     console.log(e.target.value, new Date().toLocaleTimeString(), this.props.user.email, this.state.ip)
+     console.log(e.target.value, new Date().toLocaleTimeString(), this.props.user.email, this.state)
     }
 
   render() {
@@ -45,54 +54,65 @@ class Clocker extends Component {
           <Row>
             <Col lg={6}>
               <h1>Clock In/Out</h1>
+              <br />
+              <Button className="mb-3" block onClick={this.getLocation}>
+                Set Location
+              </Button>
+              <p>
+                <strong>Location:</strong>{" "}
+                {this.state.city +
+                  ", " +
+                  this.state.state +
+                  " " +
+                  this.state.country}
+                <br />
+                <strong>IP:</strong> {this.state.ip}
+              </p>
             </Col>
-            {/* </Row> */}
-            {/* <Row style={{ textAlign: "center", marginTop: "2em" }}> */}
             <Col lg={6}>
               <h6 className="time">{this.state.time}</h6>
+              <br />
+              <Row
+                className="clocker"
+                style={{ align: "center", marginTop: "0.5em" }}
+              >
+                <Button
+                    block
+                  variant="success"
+                  className="mb-3"
+                  value="In"
+                  onClick={(e) => this.determineClockType(e)}
+                >
+                  Clock-In
+                </Button>
+                <Button
+                  variant="info"
+                  className="mr-2"
+                  value="Lunch"
+                  onClick={(e) => this.determineClockType(e)}
+                >
+                  Lunch
+                </Button>
+                <Button
+                  variant="primary"
+                  className="mr-2"
+                  value="Break"
+                  onClick={(e) => this.determineClockType(e)}
+                >
+                  Break
+                </Button>
+                <Button
+                  variant="warning"
+                  className="mr-2"
+                  value="Out"
+                  onClick={(e) => this.determineClockType(e)}
+                >
+                  Clock-Out
+                </Button>
+              </Row>
             </Col>
           </Row>
-          <Row
-            className="clocker"
-            style={{ align: "center", marginTop: "0.5em" }}
-          >
-            <Button
-              size="lg"
-              variant="success"
-              className="mr-2"
-              value="In"
-              onClick={(e) => this.determineClockType(e)}
-            >
-              Clock-In
-            </Button>
-            <Button
-              size="lg"
-              variant="info"
-              className="mr-2"
-              value="Lunch"
-              onClick={(e) => this.determineClockType(e)}
-            >
-              Lunch
-            </Button>
-            <Button
-              size="lg"
-              variant="primary"
-              className="mr-2"
-              value="Break"
-              onClick={(e) => this.determineClockType(e)}
-            >
-              Break
-            </Button>
-            <Button
-              size="lg"
-              variant="warning"
-              className="mr-2"
-              value="Out"
-              onClick={(e) => this.determineClockType(e)}
-            >
-              Clock-Out
-            </Button>
-          </Row>
+
           {/* Current Time: {this.timestamp()} */}
         </Container>
       </React.Fragment>
