@@ -69,7 +69,12 @@ class LogIn extends Component {
                 <Form.Group>
                   <InputGroup className="mb-3">
                     <InputGroup.Prepend>
-                      <InputGroup.Text id="basic-addon1"> 👤 </InputGroup.Text>
+                      <InputGroup.Text id="basic-addon1">
+                        <span role="img" aria-label="user">
+                          {" "}
+                          👤
+                        </span>
+                      </InputGroup.Text>
                     </InputGroup.Prepend>
                     <Form.Control
                       placeholder="Username..."
@@ -81,7 +86,13 @@ class LogIn extends Component {
                   </InputGroup>
                   <InputGroup className="mb-3">
                     <InputGroup.Prepend>
-                      <InputGroup.Text id="basic-addon2"> 🔒</InputGroup.Text>
+                      <InputGroup.Text id="basic-addon2">
+                        {" "}
+                        <span role="img" aria-label="lock">
+                          {" "}
+                          🔒
+                        </span>
+                      </InputGroup.Text>
                     </InputGroup.Prepend>
                     <Form.Control
                       placeholder="Password..."
