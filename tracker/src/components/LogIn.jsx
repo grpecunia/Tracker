@@ -106,9 +106,9 @@ class LogIn extends Component {
                 <br />
                 <Button
                   block
+                  variant="primary"
                   type="submit"
                   value="Log In"
-                  style={{ borderColor: "#e5e6e7", color: "#e5e6e7" }}
                 >
                   Log In
                 </Button>

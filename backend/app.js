@@ -17,6 +17,7 @@ const Users = require("./models/users.js")
 const Entries = require("./models/entries.js")
 const Activities = require("./models/activities.js")
 const Funds = require("./models/funds.js")
+const Clocker = require("./models/clocker.js")
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -125,6 +126,17 @@ app.get('/api/funds', (req, res) => {
   });
 });
 
+// Route for Getting ALL Clock Punches
+app.get('/api/clocker', (req, res) => {
+  Clocker.find((err, clocker) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(clocker);
+    }
+  });
+});
+
 //Route to Create / Add NEW Users
 app.post('/api/users',(req, res) => {
     let user = new Users(req.body);
@@ -159,6 +171,18 @@ app.post('/api/funds',(req, res) => {
         })
         .catch(err => {
             res.status(400).send('Adding new Fund failed. Check for errors!');
+        });
+});
+
+//Route to Create / Add NEW Clock Punches
+app.post('/api/clocker',(req, res) => {
+    let clocker = new Clocker(req.body);
+    clocker.save()
+        .then(clocker => {
+            res.status(200).json({'TimeTracker': 'Punch added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('Adding new Punch failed. Check for errors!');
         });
 });
 
