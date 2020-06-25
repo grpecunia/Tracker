@@ -10,6 +10,8 @@ const logger = require("morgan");
 const path = require("path");
 const session = require("express-session");
 const passport = require("./config/passport");
+// const MongoStore = require("connect-mongo")(session);
+
 
 
 
@@ -18,16 +20,33 @@ const Entries = require("./models/entries.js")
 const Activities = require("./models/activities.js")
 const Funds = require("./models/funds.js")
 const Clocker = require("./models/clocker.js")
+const redis = require("redis");
+const redisStore = require("connect-redis")(session);
+const client = redis.createClient();
 
 app.use(cors());
 app.use(bodyParser.json());
 
+// app.use(
+//   session({
+//     resave: false,
+//     saveUninitialized: true,
+//     secret: "secreto",
+//     cookie: { maxAge: 1000 * 60 * 60 },
+//   })
+// );
+
 app.use(
   session({
+    secret: "ssshhhhh",
+    store: new redisStore({
+      host: "localhost",
+      port: 6379,
+      client: client,
+      ttl: 260,
+    }), 
+    saveUninitialized: false,
     resave: false,
-    saveUninitialized: true,
-    secret: "secreto",
-    cookie: { maxAge: 1000 * 60 * 60 },
   })
 );
 
@@ -76,8 +95,8 @@ app.use("/", index);
 app.use("/", auth);
 
 // Uncomment this line for production
-let client = path.join(__dirname + "../public/index.html");
-console.log("client", client);
+// let client = path.join(__dirname + "../public/index.html");
+// console.log("client", client);
 
 mongoose.connect(process.env.DB_CONNECTION, {
   useNewUrlParser: true,
