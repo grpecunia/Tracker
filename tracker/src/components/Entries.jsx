@@ -75,7 +75,7 @@ class Entries extends Component {
       return (
         <tr key={i}>
           <td>{entries.datestamp.slice(0,10)}</td>
-          <td>{name.email}</td>
+          {/* <td>{name.email}</td> */}
           <td>{fund.fundName}</td>
           <td>{activity.activityName}</td>
           <td>{entries.duration.toFixed(1)} hrs</td>
@@ -370,7 +370,7 @@ class Entries extends Component {
               <thead>
                 <tr>
                   <th>Date</th>
-                  <th>User</th>
+                  {/* <th>User</th> */}
                   <th>Funding Source</th>
                   <th>Activity</th>
                   <th>Duration</th>
