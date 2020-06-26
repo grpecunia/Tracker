@@ -27,26 +27,12 @@ const client = redis.createClient();
 app.use(cors());
 app.use(bodyParser.json());
 
-// app.use(
-//   session({
-//     resave: false,
-//     saveUninitialized: true,
-//     secret: "secreto",
-//     cookie: { maxAge: 1000 * 60 * 60 },
-//   })
-// );
-
 app.use(
   session({
-    secret: "ssshhhhh",
-    store: new redisStore({
-      host: "localhost",
-      port: 6379,
-      client: client,
-      ttl: 260,
-    }), 
-    saveUninitialized: false,
     resave: false,
+    saveUninitialized: true,
+    secret: "kafir",
+    cookie: { maxAge: 1000 * 60 * 60 },
   })
 );
 
