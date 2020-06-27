@@ -10,19 +10,14 @@ const logger = require("morgan");
 const path = require("path");
 const session = require("express-session");
 const passport = require("./config/passport");
-// const MongoStore = require("connect-mongo")(session);
-
-
-
+const MongoStore = require("connect-mongo")(session);
 
 const Users = require("./models/users.js")
 const Entries = require("./models/entries.js")
 const Activities = require("./models/activities.js")
 const Funds = require("./models/funds.js")
 const Clocker = require("./models/clocker.js")
-const redis = require("redis");
-const redisStore = require("connect-redis")(session);
-const client = redis.createClient();
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -30,11 +25,16 @@ app.use(bodyParser.json());
 app.use(
   session({
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     secret: "kafir",
     cookie: { maxAge: 1000 * 60 * 60 },
+    store: new MongoStore({
+      url: process.env.DB_CONNECTION,
+      touchAfter: 24 * 3600, // time period in seconds
+    }),
   })
 );
+
 
 
 const allowCrossDomain = (req, res, next) => {
@@ -81,8 +81,8 @@ app.use("/", index);
 app.use("/", auth);
 
 // Uncomment this line for production
-// let client = path.join(__dirname + "../public/index.html");
-// console.log("client", client);
+let client = path.join(__dirname + "../public/index.html");
+console.log("client", client);
 
 mongoose.connect(process.env.DB_CONNECTION, {
   useNewUrlParser: true,
