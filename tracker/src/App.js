@@ -16,6 +16,7 @@ import axios from "axios";
 import actions from "./services/index";
 import Clocker from "./components/Clocker";
 
+
 class App extends Component {
   
   state = {
@@ -56,6 +57,15 @@ class App extends Component {
       _id: null,
     });
   };
+
+  cookieExtractor = (req) => {
+    let token = null;
+    if (req && req.cookies)
+    {
+        token = req.cookies['jwt'];
+    }
+    return token;
+};
 
   render() {
     console.log(this.state);

@@ -4,10 +4,18 @@ import { Link, Redirect } from "react-router-dom";
 import Dashboard from "../images/dashboard.jpg"
 import Task from "../images/tasks.jpg";
 import List from "../images/list.jpg";
+import actions from "../services/index";
 
 
 
 class Main extends Component {
+
+    componentDidMount () {
+      let user = actions.isLoggedIn();
+      this.setState({ ...user.data });
+
+
+    }
 
     render() {
       // console.log(this.props.user)

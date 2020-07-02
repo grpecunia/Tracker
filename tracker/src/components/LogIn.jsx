@@ -5,7 +5,12 @@ import { Button, Modal, Form, Container, Row, Col, InputGroup } from "react-boot
 
 class LogIn extends Component {
   
-    state = {
+  componentDidMount() {
+    let user = actions.isLoggedIn();
+    this.setState({ ...user.data });
+  }
+
+  state = {
     show: false,
   };
 
@@ -19,7 +24,7 @@ class LogIn extends Component {
         this.props.setUser({ ...user.data });
         this.props.history.push("/Main");
       })
-      .catch(( error ) => {
+      .catch((error) => {
         // this.setState({
         //   show: true,
         // });
@@ -104,12 +109,7 @@ class LogIn extends Component {
                   </InputGroup>
                 </Form.Group>
                 <br />
-                <Button
-                  block
-                  variant="primary"
-                  type="submit"
-                  value="Log In"
-                >
+                <Button block variant="primary" type="submit" value="Log In">
                   Log In
                 </Button>
               </Col>
