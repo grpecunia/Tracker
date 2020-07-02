@@ -18,18 +18,26 @@ const Activities = require("./models/activities.js")
 const Funds = require("./models/funds.js")
 const Clocker = require("./models/clocker.js")
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> be83b803e42fc3014abee185f7899b296173dd56
 
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use(
   session({
+<<<<<<< HEAD
     saveUninitialized: false,
       resave: true,
       rolling: true,
     // resave: false,
     // saveUninitialized: false,
+=======
+    resave: false,
+    saveUninitialized: false,
+>>>>>>> be83b803e42fc3014abee185f7899b296173dd56
     secret: "kafir",
     cookie: { maxAge: 1000 * 60 * 60 },
     store: new MongoStore({
@@ -40,6 +48,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 
 
